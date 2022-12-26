@@ -1,0 +1,16 @@
+--- 
+- name: play1 
+  host: webserver
+  becomes: yes 
+  tasks:
+   - name: install the latest version of Apache
+     apt:
+       name: apache2
+       state: present 
+     when: ansible_os_family =="Debian"  
+
+   - name: i want to start webserver on ubuntu
+     service:
+       name: apache2
+       state: started 
+     when: ansible_os_family =="Debian" 
